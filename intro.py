@@ -20,16 +20,6 @@ print 100 / 10.0  # 10.0
 print 100 / 10  # 10
 print variable_integer / variable_float  # 10.0
 
-
-
-
-
-
-
-
-
-
-
 # if statements:
 
 if variable_float < variable_integer:
@@ -47,16 +37,6 @@ elif "abc" == "xyz":
     pass
 else:
     pass
-
-
-
-
-
-
-
-
-
-
 
 # Lists/Dictionaries:
 
@@ -86,15 +66,35 @@ def variable_function(text):
 
 variable_function('Jolly good')
 
+# Classes:
 
+class Car(object):
+    def __init__(self, color):
+        # 'self' refers to instance variables, which you define here:
+        self.color = color
+        self.explosive = True  # boolean
 
+        self.status = 'idle'
 
+    # now to define some methods:
 
+    def blow_up(self):
+        if self.explosive == True:
+            self.status = 'exploded'
+        # 'else' isn't neccessary here
 
+    def start(self):
+        self.status = 'alive'
 
+# initialize 'Car' to variable and call blow_up():
 
+car1 = Car('blue')
+car1.blow_up()
 
+# classes can also inherit other classes:
 
-
-# Python is "batteries-included": this means it comes with a lot of COOL things/libraries
-# We'll start with the basics though... these aren't really all that special:
+class Pinto(Car):
+    def __init__(self):
+        # avoid overwriting original initializer method
+        Car.__init__(self, color='Blue')  # set default value of car color
+        self.make = 'Ford Pinto'
